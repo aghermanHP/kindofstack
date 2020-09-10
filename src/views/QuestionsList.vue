@@ -22,7 +22,19 @@
             <v-col lg="10" md="10">
               <v-list-item-content>
                 <BodyTask :title="item.title" :body="item.body"/>
-                <TagList :tags="item.tags"/>
+                <v-row>
+                  <v-col md="10">
+                    <TagList :tags="item.tags"/>
+                  </v-col>
+                  <v-col md="2">
+                    <UserComponent
+                      :name="item.owner.display_name"
+                      :link_image="item.owner.profile_image"
+                      :asked="item.creation_date"
+                      :reputation="item.owner.reputation"
+                    />
+                  </v-col>
+                </v-row>
               </v-list-item-content>
             </v-col>
           </v-row>
@@ -32,7 +44,7 @@
     </v-list>
       <v-overlay :value="loading">
         <v-progress-circular indeterminate size="74"></v-progress-circular>
-      </v-overlay> 
+      </v-overlay>
   </v-card>
 </template>
 
