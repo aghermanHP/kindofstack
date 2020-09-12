@@ -1,8 +1,25 @@
 <template>
   <div id="app">
-    <router-view/>
+    <v-row>
+      <v-col md="auto">
+        <SideMenu/>
+      </v-col>
+      <v-col>
+        <router-view/>
+      </v-col>
+    </v-row>
   </div>
 </template>
+
+<script>
+import SideMenu from '@/components/SideMenu'
+export default {
+  name: 'App',
+  components: {
+    SideMenu
+  }
+}
+</script>
 
 <style lang="scss">
 #app {

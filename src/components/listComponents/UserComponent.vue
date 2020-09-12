@@ -2,15 +2,16 @@
   <v-flex>
     <p>{{asked | moment("MMMM Do YYYY")}}</p>
     <v-row>
-      <v-col md="3">
+      <v-col md="5">
         <v-img
-          :src="`${link_image}`"
-          :lazy-src="`${link_image? link_image : default_image}`"
+          :src="link_image"
+          :lazy-src="link_image"
           aspect-ratio="1"
           class="grey lighten-2"
         />
       </v-col>
       <v-col md="7">
+        <p>{{country}}</p>
         <p>{{name}}</p>
         <p>{{reputation}}</p>
       </v-col>
@@ -22,9 +23,10 @@
 export default {
   name: 'LeftBody',
   props: {
+    country: String,
     name: String,
-    reputation: String,
-    asked: String,
+    reputation: Number,
+    asked: Number,
     link_image: String
   },
   data: () => ({

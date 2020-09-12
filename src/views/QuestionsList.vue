@@ -4,7 +4,6 @@
   class="justify-center"
   >
     <v-toolbar color="cyan" dark>
-      <v-app-bar-nav-icon/>
         <v-spacer/>
           <v-toolbar-title>Questions List</v-toolbar-title>
         <v-spacer/>
