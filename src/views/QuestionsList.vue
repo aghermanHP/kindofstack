@@ -11,7 +11,7 @@
 
     <v-list three-line>
       <template v-for="(item, index) in postsList ">
-        <v-list-item :key="item.title">
+        <v-list-item :key="item">
           <v-row class="mb-6">
             <v-col lg="1" md="1">
               <v-list-item-content>
@@ -20,7 +20,7 @@
             </v-col>
             <v-col lg="10" md="10">
               <v-list-item-content>
-                <BodyTask :title="item.title" :body="item.body"/>
+                <BodyTask :title="item.title" :body="item.body" :id="item.id"/>
                 <v-row>
                   <v-col md="10">
                     <TagList :tags="item.tags"/>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import TagList from '@/components/listComponents/tagsComponent.vue'
+import TagList from '@/components/listComponents/TagsComponent.vue'
 import BodyTask from '@/components/listComponents/BodyComment.vue'
 import LeftBodyTask from '@/components/listComponents/LeftBody.vue'
 import UserComponent from '@/components/listComponents/UserComponent.vue'

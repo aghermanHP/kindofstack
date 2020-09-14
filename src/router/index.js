@@ -11,7 +11,7 @@ const routes = [
     component: QuestionList
   },
   {
-    path: '/question',
+    path: '/question/:id',
     name: 'Question',
     component: () => import(/* webpackChunkName: "about" */ '../views/Question.vue')
   },

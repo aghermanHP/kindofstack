@@ -12,7 +12,7 @@
       </v-col>
       <v-col md="7">
         <p>{{country}}</p>
-        <p>{{name}}</p>
+        <b>{{name}}</b>
         <p>{{reputation}}</p>
       </v-col>
     </v-row>

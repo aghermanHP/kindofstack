@@ -2,7 +2,7 @@
   <v-card-text>
     <v-flex class="mb-1">
         <h3 class="text-left">
-          <router-link to="/">
+          <router-link :to="'/question/'+id">
             <strong class="title">{{title}}</strong>
           </router-link>
         </h3>
@@ -16,7 +16,8 @@ export default {
   name: 'BodyTask',
   props: {
     title: String,
-    body: String
+    body: String,
+    id: Number
   }
 }
 </script>

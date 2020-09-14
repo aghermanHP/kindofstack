@@ -11,7 +11,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import TagsComponent from '@/components/listComponents/tagsComponent'
+import TagsComponent from '@/components/listComponents/TagsComponent'
 export default {
   name: 'Tags',
   components: {
