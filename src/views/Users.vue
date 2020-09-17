@@ -1,28 +1,29 @@
 <template>
   <div>
     <v-toolbar color="cyan" dark>
-      <v-spacer/>
+      <v-spacer />
       <v-toolbar-title>Users List</v-toolbar-title>
-      <v-spacer/>
+      <v-spacer />
     </v-toolbar>
     <v-row>
-      <v-col md="2" v-for="item in usersList" :key="item">
+      <v-col v-for="item in usersList" :key="item.id" md="2">
         <UserComponent
           :name="item.display_name"
-          :link_image="item.profile_image"
+          :link-image="item.profile_image"
           :reputation="item.reputation"
           :country="item.location"
+          :asked="item.creation_date"
         />
       </v-col>
       <v-overlay :value="loading">
-        <v-progress-circular indeterminate size="74"></v-progress-circular>
+        <v-progress-circular indeterminate size="74" />
       </v-overlay>
     </v-row>
   </div>
 </template>
 
 <script>
-import UserComponent from '@/components/listComponents/UserComponent'
+import UserComponent from '@/components/listComponents/UserDetails'
 export default {
   name: 'Users',
   components: {

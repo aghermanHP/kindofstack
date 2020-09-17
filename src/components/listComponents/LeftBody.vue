@@ -1,11 +1,11 @@
 <template>
   <v-card-text>
     <v-flex class="mb-1">
-        <h2>{{score}}</h2>
-        <p>Votes</p>
-        <h2>{{answer_count}}</h2>
-        <p>Ansver</p>
-        <p>{{view_count}} views </p>
+      <h2>{{ score }}</h2>
+      <p>Votes</p>
+      <h2>{{ answerCount }}</h2>
+      <p>Ansver</p>
+      <p>{{ viewCount }} views </p>
     </v-flex>
   </v-card-text>
 </template>
@@ -14,9 +14,18 @@
 export default {
   name: 'LeftBody',
   props: {
-    score: Number,
-    answer_count: Number,
-    view_count: Number
+    score: {
+      default: 0,
+      type: Number
+    },
+    answerCount: {
+      default: 0,
+      type: Number
+    },
+    viewCount: {
+      default: 0,
+      type: Number
+    }
   }
 }
 </script>

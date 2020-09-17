@@ -1,40 +1,41 @@
 <template>
   <div>
     <v-toolbar color="cyan" dark>
-      <v-spacer/>
-      <v-toolbar-title> Question: {{question.title}}</v-toolbar-title>
-      <v-spacer/>
+      <v-spacer />
+      <v-toolbar-title> Question: {{ question.title }}</v-toolbar-title>
+      <v-spacer />
     </v-toolbar>
     <v-row class="pl-5">
       <v-col md="10">
-        <h4 v-html="question.body"></h4>
+        <RenderHtml :html="question.body" />
       </v-col>
       <v-col md="md2">
-        <UserComponent
-          :link_image="question.owner.profile_image"
+        <UserDetails
+          :link-image="question.owner.profile_image"
           :name="question.owner.display_name"
           :reputation="question.owner.reputation"
         />
       </v-col>
       <v-col md="auto">
-        <TagsComponent :tags="question.tags"/>
+        <UserTags :tags="question.tags" />
       </v-col>
     </v-row>
     <v-expansion-panels inset="true">
-      <v-expansion-panel @change="getListOfComments(item.id)" v-for="(item) in answers" :key="item">
+      <v-expansion-panel v-for="(item) in answers" :key="item.id" @change="getListOfComments(item.id)">
         <v-expansion-panel-header>
-          Answered: {{item.creation_date | moment("MMMM Do YYYY")}}
+          Answered: {{ getHumanReadebelDate(item.creation_date) }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <p v-html="item.body"/>
-          <div v-for="comment in comments" :key="comment">
-            <v-divider/>
+          <render-html :html="item.body" class="pb-3" />
+          <div v-for="comment in comments" :key="comment.id">
+            <v-divider />
             <v-row>
               <v-col md="10">
-                <p v-html="comment.body"/>
+                <RenderHtml :html="comment.body" />
               </v-col>
               <v-col>
-                <b>{{comment.owner.display_name}}</b><p>{{comment.creation_date | moment("MMMM Do YYYY")}}</p>
+                <b>{{ comment.owner.display_name }}</b>
+                <p>{{ comment.creation_date | moment("MMMM Do YYYY") }}</p>
               </v-col>
             </v-row>
           </div>
@@ -45,13 +46,16 @@
 </template>
 
 <script>
-import TagsComponent from '@/components/listComponents/TagsComponent'
-import UserComponent from '@/components/listComponents/UserComponent'
+import UserTags from '@/components/listComponents/UserTags'
+import UserDetails from '@/components/listComponents/UserDetails'
+import RenderHtml from '@/components/RenderHtml'
+import dayjs from 'dayjs'
 export default {
   name: 'Question',
   components: {
-    TagsComponent,
-    UserComponent
+    UserTags,
+    UserDetails,
+    RenderHtml
   },
   data: () => ({
     question: null,
@@ -71,6 +75,11 @@ export default {
           this.question = response.data[0]
           this.isAnswered = response.data[0].is_answered
         })
+    },
+    getHumanReadebelDate (x) {
+      const relativeTime = require('dayjs/plugin/relativeTime')
+      dayjs.extend(relativeTime)
+      return dayjs.unix(x).format('D/MMM/YYYY')
     },
     getListOfAnswers () {
       this.$api_requests_base_url.get('answers?question_id=' + this.$route.params.id)
