@@ -1,29 +1,37 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import QuestionList from '../views/QuestionsList.vue'
+import QuestionsList from '../views/QuestionsList.vue'
+import Home from '../views/Home'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'QuestionList',
-    component: QuestionList
-  },
-  {
-    path: '/question/:id',
-    name: 'Question',
-    component: () => import(/* webpackChunkName: "questions" */ '../views/Question.vue')
-  },
-  {
-    path: '/users',
-    name: 'Users',
-    component: () => import(/* webpackChunkName: "user" */ '../views/Users.vue')
-  },
-  {
-    path: '/tags',
-    name: 'tags',
-    component: () => import(/* webpackChunkName: "tags" */ '../views/Tags.vue')
+    name: 'Home',
+    component: Home,
+    children: [
+      {
+        path: '/questionsList',
+        name: 'questionsList',
+        component: QuestionsList
+      },
+      {
+        path: '/question/:id',
+        name: 'questionDetails',
+        component: () => import(/* webpackChunkName: "questions" */ '../views/Question.vue')
+      },
+      {
+        path: '/users',
+        name: 'usersList',
+        component: () => import(/* webpackChunkName: "user" */ '../views/Users.vue')
+      },
+      {
+        path: '/tags',
+        name: 'tagsList',
+        component: () => import(/* webpackChunkName: "tags" */ '../views/Tags.vue')
+      }
+    ]
   }
 ]
 

@@ -2,7 +2,7 @@
   <v-card-text>
     <v-flex class="mb-1">
       <h3 class="text-left">
-        <router-link :to="'/question/'+id">
+        <router-link :to="{name:'questionDetails', params: {id: id}}">
           <strong class="title">{{ title }}</strong>
         </router-link>
       </h3>
@@ -13,6 +13,7 @@
 
 <script>
 import RenderHtml from '@/components/RenderHtml'
+
 export default {
   name: 'BodyTask',
   components: {

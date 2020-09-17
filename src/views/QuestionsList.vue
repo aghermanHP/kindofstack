@@ -5,7 +5,9 @@
   >
     <v-toolbar color="cyan" dark>
       <v-spacer />
+
       <v-toolbar-title>Questions List</v-toolbar-title>
+
       <v-spacer />
     </v-toolbar>
 
@@ -21,10 +23,12 @@
             <v-col lg="10" md="10">
               <v-list-item-content>
                 <BodyTask :id="item.id" :title="item.title" :body="item.body" />
+
                 <v-row>
                   <v-col md="10">
                     <TagList :tags="item.tags" />
                   </v-col>
+
                   <v-col md="2">
                     <UserDetails
                       :name="item.owner.display_name"

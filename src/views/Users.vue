@@ -15,6 +15,7 @@
           :asked="item.creation_date"
         />
       </v-col>
+
       <v-overlay :value="loading">
         <v-progress-circular indeterminate size="74" />
       </v-overlay>
