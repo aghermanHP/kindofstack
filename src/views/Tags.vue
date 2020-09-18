@@ -1,10 +1,6 @@
 <template>
   <v-row>
-    <v-toolbar color="cyan" dark>
-      <v-spacer />
-      <v-toolbar-title>Tags List</v-toolbar-title>
-      <v-spacer />
-    </v-toolbar>
+    <ToolBar :message="'Tags list'" />
     <UserTags :tags="tags" :count="tags.count" />
   </v-row>
 </template>
@@ -12,11 +8,13 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import UserTags from '@/components/listComponents/UserTags'
+import ToolBar from '@/components/ToolBar'
 
 export default {
   name: 'Tags',
   components: {
-    UserTags
+    UserTags,
+    ToolBar
   },
   computed: {
     ...mapState('TagsList', { tags: 'allTags' })

@@ -6,19 +6,17 @@
           <strong class="title">{{ title }}</strong>
         </router-link>
       </h3>
-      <RenderHtml :html="body" />
+      <!-- eslint-disable-next-line -->
+      <p v-html="body" />
+      <!-- eslint-enable -->
     </v-flex>
   </v-card-text>
 </template>
 
 <script>
-import RenderHtml from '@/components/RenderHtml'
 
 export default {
   name: 'BodyTask',
-  components: {
-    RenderHtml
-  },
   props: {
     title: {
       default: '',

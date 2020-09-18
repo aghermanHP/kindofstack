@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-toolbar color="cyan" dark>
-      <v-spacer />
-      <v-toolbar-title> Question: {{ question.title }}</v-toolbar-title>
-      <v-spacer />
-    </v-toolbar>
+    <ToolBar :message="'Question:  '+question.title" />
+
     <v-row class="pl-5">
       <v-col md="10">
-        <RenderHtml :html="question.body" />
+        <!-- eslint-disable-next-line -->
+        <p v-html="question.body" />
+        <!-- eslint-enable -->
       </v-col>
+
       <v-col md="md2">
         <UserDetails
           :link-image="question.owner.profile_image"
@@ -16,6 +16,7 @@
           :reputation="question.owner.reputation"
         />
       </v-col>
+
       <v-col md="auto">
         <UserTags :tags="question.tags" />
       </v-col>
@@ -25,17 +26,23 @@
         <v-expansion-panel-header>
           Answered: {{ getHumanReadebelDate(item.creation_date) }}
         </v-expansion-panel-header>
+
         <v-expansion-panel-content>
-          <render-html :html="item.body" class="pb-3" />
+          <!-- eslint-disable-next-line -->
+          <p class="pb-3" v-html="item.body" />
+          <!-- eslint-enable -->
+
           <div v-for="comment in comments" :key="comment.id">
-            <v-divider />
             <v-row>
               <v-col md="10">
-                <RenderHtml :html="comment.body" />
+                <!-- eslint-disable-next-line -->
+                <p v-html="comment.body" />
+                <!-- eslint-enable -->
               </v-col>
+
               <v-col>
                 <b>{{ comment.owner.display_name }}</b>
-                <p>{{ comment.creation_date | moment("MMMM Do YYYY") }}</p>
+                <p>{{ comment.creation_date | moment('MMMM Do YYYY') }}</p>
               </v-col>
             </v-row>
           </div>
@@ -48,14 +55,15 @@
 <script>
 import UserTags from '@/components/listComponents/UserTags'
 import UserDetails from '@/components/listComponents/UserDetails'
-import RenderHtml from '@/components/RenderHtml'
+import ToolBar from '@/components/ToolBar'
 import dayjs from 'dayjs'
+
 export default {
   name: 'Question',
   components: {
     UserTags,
     UserDetails,
-    RenderHtml
+    ToolBar
   },
   data: () => ({
     question: null,

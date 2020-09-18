@@ -3,13 +3,7 @@
     max-width="100%"
     class="justify-center"
   >
-    <v-toolbar color="cyan" dark>
-      <v-spacer />
-
-      <v-toolbar-title>Questions List</v-toolbar-title>
-
-      <v-spacer />
-    </v-toolbar>
+    <ToolBar :message="'Questions List'" />
 
     <v-list three-line>
       <template v-for="(item, index) in postsList">
@@ -57,6 +51,7 @@ import TagList from '@/components/listComponents/UserTags.vue'
 import BodyTask from '@/components/listComponents/BodyComment.vue'
 import LeftBodyTask from '@/components/listComponents/LeftBody.vue'
 import UserDetails from '@/components/listComponents/UserDetails.vue'
+import ToolBar from '@/components/ToolBar'
 
 export default {
   name: 'QuestionsList',
@@ -64,7 +59,8 @@ export default {
     TagList,
     BodyTask,
     LeftBodyTask,
-    UserDetails
+    UserDetails,
+    ToolBar
   },
   props: {
     msg: {

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="cyan" dark>
-      <v-spacer />
-      <v-toolbar-title>Users List</v-toolbar-title>
-      <v-spacer />
-    </v-toolbar>
+    <ToolBar :message="'Users List'" />
     <v-row>
       <v-col v-for="item in usersList" :key="item.id" md="2">
         <UserComponent
@@ -25,9 +21,11 @@
 
 <script>
 import UserComponent from '@/components/listComponents/UserDetails'
+import ToolBar from '@/components/ToolBar'
 export default {
   name: 'Users',
   components: {
+    ToolBar,
     UserComponent
   },
   data: () => ({

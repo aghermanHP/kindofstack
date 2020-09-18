@@ -1,10 +1,12 @@
 <template>
   <v-flex>
     <p>{{ humanReadebleDate }}</p>
+
     <v-row>
       <v-col md="5">
         <v-img :src="linkImage" :lazy-src="linkImage" aspect-ratio="1" class="grey lighten-2" />
       </v-col>
+
       <v-col md="7">
         <p>{{ country }}</p>
         <b>{{ name }}</b>

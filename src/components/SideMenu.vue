@@ -13,6 +13,7 @@
                 Kind of Stack
               </v-list-item-title>
             </v-list-item>
+
             <v-list-item @click="gotoPage('tagsList')">
               <v-list-item-icon>
                 <v-icon>mdi-tag-multiple</v-icon>
@@ -20,6 +21,7 @@
 
               <v-list-item-title>tags</v-list-item-title>
             </v-list-item>
+
             <v-list-item @click="gotoPage('usersList')">
               <v-list-item-icon>
                 <v-icon>mdi-account-multiple</v-icon>
@@ -36,7 +38,6 @@
 
 <script>
 export default {
-  //
   methods: {
     gotoPage (x) {
       this.$router.push({ name: x })
