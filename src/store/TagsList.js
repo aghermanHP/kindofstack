@@ -1,11 +1,12 @@
 import Axios from 'axios'
+import { setTags } from './MutationTypes'
 const tagsList = {
   namespaced: true,
   state: () => ({
     allTags: null
   }),
   mutations: {
-    setTags (state, payload) {
+    [setTags] (state, payload) {
       state.allTags = payload
     }
   },
