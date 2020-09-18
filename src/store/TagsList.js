@@ -10,7 +10,7 @@ const tagsList = {
     }
   },
   actions: {
-    TagsAction ({ commit }) {
+    tagsAction ({ commit }) {
       Axios.get(process.env.VUE_APP_BASE_API_URL + 'tags')
         .then((response) => {
           const tags = response.data

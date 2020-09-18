@@ -20,13 +20,10 @@ export default {
     ...mapState('TagsList', { tags: 'allTags' })
   },
   created () {
-    this.setTags()
+    this.tagsAction()
   },
   methods: {
-    ...mapActions('TagsList', ['TagsAction']),
-    setTags () {
-      this.TagsAction()
-    }
+    ...mapActions('TagsList', ['tagsAction'])
   }
 }
 </script>

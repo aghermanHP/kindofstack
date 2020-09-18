@@ -4,7 +4,7 @@
       <v-card>
         <v-navigation-drawer permanent expand-on-hover>
           <v-list nav dense>
-            <v-list-item @click="gotoPage('questionsList')">
+            <v-list-item :to="{ name: 'questionsList' }">
               <v-list-item-icon>
                 <v-icon>mdi-earth</v-icon>
               </v-list-item-icon>
@@ -14,7 +14,7 @@
               </v-list-item-title>
             </v-list-item>
 
-            <v-list-item @click="gotoPage('tagsList')">
+            <v-list-item :to="{name: 'tagsList'}">
               <v-list-item-icon>
                 <v-icon>mdi-tag-multiple</v-icon>
               </v-list-item-icon>
@@ -22,7 +22,7 @@
               <v-list-item-title>tags</v-list-item-title>
             </v-list-item>
 
-            <v-list-item @click="gotoPage('usersList')">
+            <v-list-item :to="{name: 'usersList'}">
               <v-list-item-icon>
                 <v-icon>mdi-account-multiple</v-icon>
               </v-list-item-icon>
@@ -38,10 +38,5 @@
 
 <script>
 export default {
-  methods: {
-    gotoPage (x) {
-      this.$router.push({ name: x })
-    }
-  }
 }
 </script>
