@@ -22,6 +22,7 @@
 <script>
 import UserComponent from '@/components/listComponents/UserDetails'
 import ToolBar from '@/components/ToolBar'
+
 export default {
   name: 'Users',
   components: {
