@@ -4,7 +4,7 @@
 
     <v-row class="pl-5">
       <v-col md="10">
-        <!-- eslint-disable-next-line -->
+        <!-- eslint-disable-next-line no-v-html -->
         <p v-html="question.body" />
         <!-- eslint-enable -->
       </v-col>
@@ -28,14 +28,14 @@
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          <!-- eslint-disable-next-line -->
+          <!-- eslint-disable-next-line no-v-html -->
           <p class="pb-3" v-html="item.body" />
           <!-- eslint-enable -->
 
           <div v-for="comment in comments" :key="comment.id">
             <v-row>
               <v-col md="10">
-                <!-- eslint-disable-next-line -->
+                <!-- eslint-disable-next-line no-v-html-->
                 <p v-html="comment.body" />
                 <!-- eslint-enable -->
               </v-col>

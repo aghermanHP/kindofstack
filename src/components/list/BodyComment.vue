@@ -6,7 +6,7 @@
           <strong class="title">{{ title }}</strong>
         </router-link>
       </h3>
-      <!-- eslint-disable-next-line -->
+      <!-- eslint-disable-next-line no-v-html -->
       <p v-html="body" />
       <!-- eslint-enable -->
     </v-flex>
