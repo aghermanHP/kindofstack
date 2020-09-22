@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import TagsList from './TagsList.js'
+import TagsList from './tagsList.js'
 
 Vue.use(Vuex)
 

@@ -18,7 +18,7 @@ export default {
   name: 'BodyTask',
   props: {
     title: {
-      default: '',
+      default: null,
       type: String
     },
     body: {
@@ -31,7 +31,9 @@ export default {
     }
   },
   created () {
-    this.body = this.body.match(/<p>.+<\/p>/).toString()
+    if (this.body !== null) {
+      this.body = this.body.match(/<p>.+<\/p>/).toString()
+    }
   }
 }
 </script>

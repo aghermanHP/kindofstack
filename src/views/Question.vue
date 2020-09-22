@@ -53,8 +53,8 @@
 </template>
 
 <script>
-import UserTags from '@/components/listComponents/UserTags'
-import UserDetails from '@/components/listComponents/UserDetails'
+import UserTags from '@/components/list/UserTags'
+import UserDetails from '@/components/list/UserDetails'
 import ToolBar from '@/components/ToolBar'
 import dayjs from 'dayjs'
 
@@ -71,7 +71,7 @@ export default {
     comments: null,
     loading: true
   }),
-  mounted () {
+  created () {
     this.getQuestionById()
     this.getListOfAnswers()
   },

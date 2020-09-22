@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ToolBar :message="'Users List'" />
+    <ToolBar message="Users List" />
     <v-row>
       <v-col v-for="item in usersList" :key="item.id" md="2">
         <UserComponent
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import UserComponent from '@/components/listComponents/UserDetails'
+import UserComponent from '@/components/list/UserDetails'
 import ToolBar from '@/components/ToolBar'
 
 export default {

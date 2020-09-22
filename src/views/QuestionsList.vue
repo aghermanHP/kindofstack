@@ -3,7 +3,7 @@
     max-width="100%"
     class="justify-center"
   >
-    <ToolBar :message="'Questions List'" />
+    <ToolBar message="Questions List" />
 
     <v-list three-line>
       <template v-for="(item, index) in postsList">
@@ -47,10 +47,10 @@
 </template>
 
 <script>
-import TagList from '@/components/listComponents/UserTags.vue'
-import BodyTask from '@/components/listComponents/BodyComment.vue'
-import LeftBodyTask from '@/components/listComponents/LeftBody.vue'
-import UserDetails from '@/components/listComponents/UserDetails.vue'
+import TagList from '@/components/list/UserTags.vue'
+import BodyTask from '@/components/list/BodyComment.vue'
+import LeftBodyTask from '@/components/list/LeftBody.vue'
+import UserDetails from '@/components/list/UserDetails.vue'
 import ToolBar from '@/components/ToolBar'
 
 export default {

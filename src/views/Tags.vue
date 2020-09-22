@@ -1,13 +1,16 @@
 <template>
   <v-row>
-    <ToolBar :message="'Tags list'" />
-    <UserTags :tags="tags" :count="tags.count" />
+    <ToolBar message="Tags list" />
+    <UserTags v-if="technologiesTags" :tags="technologiesTags" :count="technologiesTags.count" />
   </v-row>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
-import UserTags from '@/components/listComponents/UserTags'
+import { mapActions, mapGetters } from 'vuex'
+import { TAGS } from '@/store/gettersTypes'
+import { FETCHTAGS } from '@/store/actionTypes'
+
+import UserTags from '@/components/list/UserTags'
 import ToolBar from '@/components/ToolBar'
 
 export default {
@@ -17,13 +20,13 @@ export default {
     ToolBar
   },
   computed: {
-    ...mapState('TagsList', { tags: 'allTags' })
+    ...mapGetters({ technologiesTags: TAGS })
   },
   created () {
     this.tagsAction()
   },
   methods: {
-    ...mapActions('TagsList', ['tagsAction'])
+    ...mapActions({ tagsAction: FETCHTAGS })
   }
 }
 </script>
