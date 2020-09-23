@@ -5,7 +5,7 @@
   >
     <ToolBar message="Questions List" />
 
-    <v-list three-line>
+    <v-list v-if="!loading" three-line>
       <template v-for="(item, index) in postsList">
         <v-list-item :key="item.id">
           <v-row class="mb-6">
@@ -16,7 +16,7 @@
             </v-col>
             <v-col lg="10" md="10">
               <v-list-item-content>
-                <BodyTask :id="item.id" :title="item.title" :body="item.body" />
+                <BodyTask :id="item.id" :title="item.title" :body="splitBodyContent(item.body)" />
 
                 <v-row>
                   <v-col md="10">
@@ -77,11 +77,19 @@ export default {
   },
   methods: {
     getListOfComments () {
-      this.$api_requests_base_url.get('questions')
+      this.$apiRequestsBaseUrl.get('questions')
         .then((response) => {
           this.loading = false
           this.postsList = response.data
         })
+    },
+    splitBodyContent (x) {
+      const matched = x.match(/<p>.+<\/p>/)
+      if (matched) {
+        return matched[0] + '...'
+      } else {
+        return 'There isn\'t body of the question'
+      }
     }
   }
 }

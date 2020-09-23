@@ -6,7 +6,6 @@
       <v-col md="10">
         <!-- eslint-disable-next-line no-v-html -->
         <p v-html="question.body" />
-        <!-- eslint-enable -->
       </v-col>
 
       <v-col md="md2">
@@ -30,14 +29,12 @@
         <v-expansion-panel-content>
           <!-- eslint-disable-next-line no-v-html -->
           <p class="pb-3" v-html="item.body" />
-          <!-- eslint-enable -->
 
           <div v-for="comment in comments" :key="comment.id">
             <v-row>
               <v-col md="10">
                 <!-- eslint-disable-next-line no-v-html-->
                 <p v-html="comment.body" />
-                <!-- eslint-enable -->
               </v-col>
 
               <v-col>
@@ -77,7 +74,7 @@ export default {
   },
   methods: {
     getQuestionById () {
-      this.$api_requests_base_url.get('questions?id=' + this.$route.params.id)
+      this.$apiRequestsBaseUrl.get('questions?id=' + this.$route.params.id)
         .then((response) => {
           this.loading = false
           this.question = response.data[0]
@@ -90,13 +87,13 @@ export default {
       return dayjs.unix(x).format('D/MMM/YYYY')
     },
     getListOfAnswers () {
-      this.$api_requests_base_url.get('answers?question_id=' + this.$route.params.id)
+      this.$apiRequestsBaseUrl.get('answers?question_id=' + this.$route.params.id)
         .then((response) => {
           this.answers = response.data
         })
     },
     getListOfComments (x) {
-      this.$api_requests_base_url.get('comments?answer_id=' + x)
+      this.$apiRequestsBaseUrl.get('comments?answer_id=' + x)
         .then((response) => {
           this.comments = response.data
         })

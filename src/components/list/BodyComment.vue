@@ -2,13 +2,12 @@
   <v-card-text>
     <v-flex class="mb-1">
       <h3 class="text-left">
-        <router-link :to="{ name:'questionDetails', params: {id: id} }">
+        <router-link :to="{ name:'questionDetails', params: { id: id } }">
           <strong class="title">{{ title }}</strong>
         </router-link>
       </h3>
-      <!-- eslint-disable-next-line no-v-html -->
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <p v-html="body" />
-      <!-- eslint-enable -->
     </v-flex>
   </v-card-text>
 </template>
@@ -28,11 +27,6 @@ export default {
     id: {
       default: null,
       type: Number
-    }
-  },
-  created () {
-    if (this.body !== null) {
-      this.body = this.body.match(/<p>.+<\/p>/).toString()
     }
   }
 }

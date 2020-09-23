@@ -7,7 +7,7 @@
 
       <h2>{{ answerCount }}</h2>
 
-      <p>Ansver</p>
+      <p>Answer</p>
 
       <p>{{ viewCount }} views </p>
     </v-flex>

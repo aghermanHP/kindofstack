@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     getListOfUsers () {
-      this.$api_requests_base_url.get('users')
+      this.$apiRequestsBaseUrl.get('users')
         .then((response) => {
           this.loading = false
           this.usersList = response.data
