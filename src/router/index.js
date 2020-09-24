@@ -12,24 +12,24 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '/questionsList',
-        name: 'questionsList',
+        path: '/questions',
+        name: 'questions.list',
         component: QuestionsList
       },
       {
         path: '/question/:id(\\d+)',
-        name: 'questionDetails',
+        name: 'question.details',
         props: true,
         component: () => import(/* webpackChunkName: "questions" */ '../views/Question.vue')
       },
       {
         path: '/users',
-        name: 'usersList',
+        name: 'users.list',
         component: () => import(/* webpackChunkName: "user" */ '../views/Users.vue')
       },
       {
         path: '/tags',
-        name: 'tagsList',
+        name: 'tags.list',
         component: () => import(/* webpackChunkName: "tags" */ '../views/Tags.vue')
       }
     ]

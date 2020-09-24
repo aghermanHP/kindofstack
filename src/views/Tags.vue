@@ -8,7 +8,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { TAGS } from '@/store/gettersTypes'
-import { FETCHTAGS } from '@/store/actionTypes'
+import { FETCH_TAGS } from '@/store/actionTypes'
 
 import UserTags from '@/components/list/UserTags'
 import ToolBar from '@/components/ToolBar'
@@ -23,10 +23,10 @@ export default {
     ...mapGetters({ technologiesTags: TAGS })
   },
   created () {
-    this.tagsAction()
+    this.tagsFetch()
   },
   methods: {
-    ...mapActions({ tagsAction: FETCHTAGS })
+    ...mapActions({ tagsFetch: FETCH_TAGS })
   }
 }
 </script>

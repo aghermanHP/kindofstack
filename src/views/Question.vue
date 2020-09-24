@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ToolBar :message="'Question:  '+question.title" />
+    <ToolBar :message="'Question:  ' + question.title" />
 
     <v-row class="pl-5">
       <v-col md="10">
@@ -10,9 +10,7 @@
 
       <v-col md="md2">
         <UserDetails
-          :link-image="question.owner.profile_image"
-          :name="question.owner.display_name"
-          :reputation="question.owner.reputation"
+          :owner="question.owner"
         />
       </v-col>
 
@@ -53,7 +51,7 @@
 import UserTags from '@/components/list/UserTags'
 import UserDetails from '@/components/list/UserDetails'
 import ToolBar from '@/components/ToolBar'
-import dayjs from 'dayjs'
+import dayjs from '@/plugins/day'
 
 export default {
   name: 'Question',
@@ -61,6 +59,12 @@ export default {
     UserTags,
     UserDetails,
     ToolBar
+  },
+  props: {
+    id: {
+      type: [String, Number],
+      required: true
+    }
   },
   data: () => ({
     question: null,
@@ -74,17 +78,15 @@ export default {
   },
   methods: {
     getQuestionById () {
-      this.$apiRequestsBaseUrl.get('questions?id=' + this.$route.params.id)
+      this.$apiRequestsBaseUrl.get('questions?id=' + this.id)
         .then((response) => {
           this.loading = false
           this.question = response.data[0]
           this.isAnswered = response.data[0].is_answered
         })
     },
-    getHumanReadebelDate (x) {
-      const relativeTime = require('dayjs/plugin/relativeTime')
-      dayjs.extend(relativeTime)
-      return dayjs.unix(x).format('D/MMM/YYYY')
+    getHumanReadebelDate (date) {
+      return dayjs.unix(date).format('D/MMM/YYYY')
     },
     getListOfAnswers () {
       this.$apiRequestsBaseUrl.get('answers?question_id=' + this.$route.params.id)
@@ -92,8 +94,8 @@ export default {
           this.answers = response.data
         })
     },
-    getListOfComments (x) {
-      this.$apiRequestsBaseUrl.get('comments?answer_id=' + x)
+    getListOfComments (answerId) {
+      this.$apiRequestsBaseUrl.get('comments?answer_id=' + answerId)
         .then((response) => {
           this.comments = response.data
         })

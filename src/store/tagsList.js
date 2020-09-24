@@ -1,23 +1,23 @@
 import Axios from 'axios'
-import { SETTAGS } from './mutationTypes'
-import { FETCHTAGS } from '@/store/actionTypes'
+import { SET_TAGS } from './mutationTypes'
+import { FETCH_TAGS } from '@/store/actionTypes'
 import { TAGS } from '@/store/gettersTypes'
 
 const tagsList = {
   state: () => ({
-    tags: null
+    tags: []
   }),
   mutations: {
-    [SETTAGS] (state, payload) {
+    [SET_TAGS] (state, payload) {
       state.tags = payload
     }
   },
   actions: {
-    [FETCHTAGS] ({ commit }) {
+    [FETCH_TAGS] ({ commit }) {
       Axios.get(process.env.VUE_APP_BASE_API_URL + 'tags')
         .then((response) => {
           const tags = response.data
-          commit(SETTAGS, tags)
+          commit(SET_TAGS, tags)
         })
     }
   },

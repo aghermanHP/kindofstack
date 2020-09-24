@@ -4,10 +4,7 @@
     <v-row>
       <v-col v-for="item in usersList" :key="item.id" md="2">
         <UserComponent
-          :name="item.display_name"
-          :link-image="item.profile_image"
-          :reputation="item.reputation"
-          :country="item.location"
+          :owner="item"
           :asked="item.creation_date"
         />
       </v-col>

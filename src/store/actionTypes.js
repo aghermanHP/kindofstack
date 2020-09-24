@@ -1,1 +1,1 @@
-export const FETCHTAGS = 'FETCHTAGS'
+export const FETCH_TAGS = 'FETCH_TAGS'

@@ -1,1 +1,1 @@
-export const SETTAGS = 'SETTAGS'
+export const SET_TAGS = 'SET_TAGS'

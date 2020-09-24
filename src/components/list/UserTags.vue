@@ -23,11 +23,11 @@ export default {
   name: 'TagList',
   props: {
     tags: {
-      default: null,
+      required: true,
       type: Array
     },
     count: {
-      default: null,
+      required: true,
       type: Number
     }
   }

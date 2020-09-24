@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container--fluid">
     <v-row>
-      <v-col md="auto">
+      <v-col md="auto" class="position-fixed">
         <SideMenu />
       </v-col>
 

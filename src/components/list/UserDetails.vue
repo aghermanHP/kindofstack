@@ -4,49 +4,35 @@
 
     <v-row>
       <v-col md="5">
-        <v-img :src="linkImage" :lazy-src="linkImage" aspect-ratio="1" class="grey lighten-2" />
+        <v-img :src="owner.profile_image" :lazy-src="owner.profile_image" aspect-ratio="1" class="grey lighten-2" />
       </v-col>
 
       <v-col md="7">
-        <p>{{ country }}</p>
-        <b>{{ name }}</b>
-        <p>{{ reputation }}</p>
+        <p>{{ owner.country }}</p>
+        <b>{{ owner.display_name }}</b>
+        <p>{{ owner.reputation }}</p>
       </v-col>
     </v-row>
   </v-flex>
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import dayjs from '@/plugins/day'
 
 export default {
   name: 'LeftBody',
   props: {
-    country: {
-      default: null,
-      type: String
-    },
-    name: {
-      default: null,
-      type: String
-    },
-    reputation: {
-      default: null,
-      type: Number
+    owner: {
+      required: true,
+      type: Object
     },
     asked: {
       default: null,
       type: Number
-    },
-    linkImage: {
-      default: null,
-      type: String
     }
   },
   computed: {
     humanReadebleDate: function () {
-      const relativeTime = require('dayjs/plugin/relativeTime')
-      dayjs.extend(relativeTime)
       return dayjs.unix(this.asked).format('D/MMM/YYYY')
     }
   }

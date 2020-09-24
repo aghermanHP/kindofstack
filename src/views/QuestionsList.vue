@@ -11,26 +11,20 @@
           <v-row class="mb-6">
             <v-col lg="1" md="1">
               <v-list-item-content>
-                <LeftBodyTask :score="item.score" :answer-count="item.answer_count" :view-count="item.view_count" />
+                <LeftColumn :comment="item"/>
               </v-list-item-content>
             </v-col>
             <v-col lg="10" md="10">
               <v-list-item-content>
-                <BodyTask :id="item.id" :title="item.title" :body="splitBodyContent(item.body)" />
+                <CommentBody :comment="item"/>
 
                 <v-row>
                   <v-col md="10">
-                    <TagList :tags="item.tags" />
+                    <UserTags :tags="item.tags" />
                   </v-col>
 
                   <v-col md="2">
-                    <UserDetails
-                      :name="item.owner.display_name"
-                      :country="item.owner.country"
-                      :link-image="item.owner.profile_image"
-                      :asked="item.creation_date"
-                      :reputation="item.owner.reputation"
-                    />
+                    <UserDetails :owner="item.owner" :asked="item.creation_date" />
                   </v-col>
                 </v-row>
               </v-list-item-content>
@@ -47,18 +41,18 @@
 </template>
 
 <script>
-import TagList from '@/components/list/UserTags.vue'
-import BodyTask from '@/components/list/BodyComment.vue'
-import LeftBodyTask from '@/components/list/LeftBody.vue'
+import UserTags from '@/components/list/UserTags.vue'
+import CommentBody from '@/components/list/CommentBody.vue'
+import LeftColumn from '@/components/list/LeftColumn.vue'
 import UserDetails from '@/components/list/UserDetails.vue'
 import ToolBar from '@/components/ToolBar'
 
 export default {
   name: 'QuestionsList',
   components: {
-    TagList,
-    BodyTask,
-    LeftBodyTask,
+    UserTags,
+    CommentBody,
+    LeftColumn,
     UserDetails,
     ToolBar
   },
@@ -82,14 +76,6 @@ export default {
           this.loading = false
           this.postsList = response.data
         })
-    },
-    splitBodyContent (x) {
-      const matched = x.match(/<p>.+<\/p>/)
-      if (matched) {
-        return matched[0] + '...'
-      } else {
-        return 'There isn\'t body of the question'
-      }
     }
   }
 }
