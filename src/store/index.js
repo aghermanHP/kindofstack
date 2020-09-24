@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import TagsList from './tagsList.js'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+const store = new Vuex.Store({
   modules: {
+    TagsList
   }
 })
+
+export default store
